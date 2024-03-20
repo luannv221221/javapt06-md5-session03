@@ -6,21 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-
-public class Category {
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String categoryName;
-    private Boolean categoryStatus;
-    @OneToMany(mappedBy = "category")
-    @JsonIgnore
-    private List<Product> products;
-
+    private String productName;
+    private Double price;
+    @ManyToOne
+    @JoinColumn(name = "category_id",referencedColumnName = "id")
+    private Category category;
 }

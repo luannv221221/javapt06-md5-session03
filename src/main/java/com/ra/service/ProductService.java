@@ -15,4 +15,5 @@ public interface ProductService {
     void delete(Long id);
     Product update(Product product,Long id);
     Page<Product> paginate(Pageable pageable);
+    Page<Product> searchByProductName(Pageable pageable,String keyword);
 }

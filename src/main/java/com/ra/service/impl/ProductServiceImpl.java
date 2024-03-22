@@ -53,4 +53,9 @@ public class ProductServiceImpl implements ProductService {
     public Page<Product> paginate(Pageable pageable) {
         return productRepository.findAll(pageable);
     }
+
+    @Override
+    public Page<Product> searchByProductName(Pageable pageable, String keyword) {
+        return productRepository.findAllByProductNameContainingIgnoreCase(pageable,keyword);
+    }
 }

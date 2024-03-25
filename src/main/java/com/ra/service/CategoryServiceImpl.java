@@ -1,5 +1,6 @@
 package com.ra.service;
 
+import com.ra.exception.CustomException;
 import com.ra.model.dto.reponse.CategoryResponse;
 import com.ra.model.entity.Category;
 import com.ra.repository.CategoryRepository;
@@ -25,7 +26,10 @@ public class CategoryServiceImpl implements CategoryService{
     }
 
     @Override
-    public Category save(Category category) {
+    public Category save(Category category) throws CustomException  {
+        if(categoryRepository.existsByCategoryName(category.getCategoryName())){
+            throw new CustomException(category.getCategoryName() + "D ton tai");
+        }
         return categoryRepository.save(category);
     }
 

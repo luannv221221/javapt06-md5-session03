@@ -1,5 +1,6 @@
 package com.ra.controller;
 
+import com.ra.exception.CustomException;
 import com.ra.model.dto.reponse.CategoryResponse;
 import com.ra.model.entity.Category;
 import com.ra.service.CategoryService;
@@ -23,7 +24,7 @@ public class CategoryController {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody Category category){
+    public ResponseEntity<?> create(@RequestBody Category category) throws CustomException {
         Category newCategory = categoryService.save(category);
         if(newCategory!=null){
             return new ResponseEntity<>(newCategory,HttpStatus.CREATED);

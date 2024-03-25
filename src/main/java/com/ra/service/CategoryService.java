@@ -1,5 +1,6 @@
 package com.ra.service;
 
+import com.ra.exception.CustomException;
 import com.ra.model.dto.reponse.CategoryResponse;
 import com.ra.model.entity.Category;
 
@@ -8,7 +9,7 @@ import java.util.Optional;
 
 public interface CategoryService {
     List<CategoryResponse> getAll();
-    Category save(Category category);
+    Category save(Category category) throws CustomException;
     Category findById(Long id);
     void delete(Long id);
     Category update(Category category,Long id);

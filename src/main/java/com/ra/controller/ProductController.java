@@ -3,6 +3,7 @@ package com.ra.controller;
 import com.ra.model.dto.request.ProductRequest;
 import com.ra.model.entity.Product;
 import com.ra.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,7 +39,7 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
     @PostMapping("/create")
-    public ResponseEntity<Product> create(@RequestBody ProductRequest productRequest){
+    public ResponseEntity<Product> create(@RequestBody @Valid ProductRequest productRequest){
         Product  product = productService.save(productRequest);
         return new ResponseEntity<>(product,HttpStatus.CREATED);
     }
